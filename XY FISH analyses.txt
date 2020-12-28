@@ -1,5 +1,5 @@
 macro "find XY FISH Action Tool - C000 O02gf C0f0 V3655 Cf00 V7b44 T0206F " {
-	
+
 	//ask for file
 	path = File.openDialog("select MIP file");
 
@@ -36,7 +36,7 @@ macro "find XY FISH Action Tool - C000 O02gf C0f0 V3655 Cf00 V7b44 T0206F " {
 	Stack.setChannel(2);
 	run("Threshold...");
 	waitForUser("adjust threshold and press OK");
-	
+
 	//find Y FISH signals and change ROI colors (blue for no signal, green for signal)
 	N=roiManager("count");
 	for (n=0; n<N ; n++) {
@@ -59,7 +59,7 @@ macro "find XY FISH Action Tool - C000 O02gf C0f0 V3655 Cf00 V7b44 T0206F " {
 	Stack.setChannel(3);
 	run("Threshold...");
 	waitForUser("adjust threshold and press OK");
-	
+
 	//find Y FISH signals and change ROI colors (blue for no signal, green for Y signal, red for X signal, white for both)
 	N=roiManager("count");
 	for (n=0; n<N ; n++) {
@@ -102,14 +102,14 @@ macro "make white FISH Action Tool - Cf00 O02gf C0f0 O12gf "{
 
 macro "confirm XY FISH ROIs Action Tool - C000 T0f09D T6f09o Taf09n Tff09e " {
 	waitForUser("save result ROIs and close all?");
-	
+
 	//extract dir and basename
 	dir = File.directory ;
 	name = File.name ;
 	baseNameEnd=indexOf(name, " nuclei ROIs.");
 	baseName=substring(name, 0, baseNameEnd);
 	print("filename is" + baseName);
-	
+
 	//count FISH signals and save result
 	nul = 0;
 	X = 0;
